@@ -4,13 +4,17 @@ import (
 	"html/template"
 	"log"
 	"net/http"
-	"time"
-)
+	_ "github.com/go-sql-driver/mysql"
+	"github.com/go-xorm/xorm"
+	)
+
+var engine *xorm.Engine
 
 type PageVariables struct {
-	Date         string
-	Time         string
+	PageTitle        string
+	Answer           string
 }
+
 
 func main() {
 	http.HandleFunc("/", HomePage)
@@ -22,12 +26,30 @@ func main() {
 }
 
 func login(w http.ResponseWriter, r *http.Request) {
-	t, err := template.ParseFiles("view/homepage.html") //parse the html file homepage.html
+	err := r.ParseForm()
+	var errDB error
+	engine, errDB = xorm.NewEngine("mysql", "root:123@/test?charset=utf8")
+
+	print(errDB)
+	username := r.PostForm.Get("username")
+	password := r.PostForm.Get("password")
+	submit := r.PostForm.Get("submit")
+
+	vars := PageVariables{
+		Answer : "",
+		PageTitle: "Login",
+	}
+
+	if submit != "" && (username == "" || password == "" ){
+		vars.Answer = "username or password is empty"
+	}
+
+	t, err := template.ParseFiles("view/login.html") //parse the html file homepage.html
 	if err != nil { // if there is an error
 		log.Print("template parsing error: ", err) // log it
 	}
 
-	err = t.Execute(w, nil) //execute the template and pass it the HomePageVars struct to fill in the gaps
+	err = t.Execute(w, vars) //execute the template and pass it the HomePageVars struct to fill in the gaps
 	if err != nil { // if there is an error
 		log.Print("template executing error: ", err) //log it
 	}
@@ -45,32 +67,20 @@ func admin(w http.ResponseWriter, r *http.Request) {
 
 }
 
-func HomePage(w http.ResponseWriter, r *http.Request){
+func HomePage(w http.ResponseWriter, r *http.Request) {
 
-	now := time.Now() // find the time right now
-	HomePageVars := PageVariables{ //store the date and time in a struct
-		Date: now.Format("02-01-2006"),
-		Time: now.Format("15:04:05"),
-	}
-
-	t, err := template.ParseFiles("view/homepage.html") //parse the html file homepage.html
-	if err != nil { // if there is an error
-		log.Print("template parsing error: ", err) // log it
-	}
-	err = t.Execute(w, HomePageVars) //execute the template and pass it the HomePageVars struct to fill in the gaps
-	if err != nil { // if there is an error
-		log.Print("template executing error: ", err) //log it
-	}
+	//now := time.Now() // find the time right now
+	//HomePageVars := PageVariables{ //store the date and time in a struct
+	//	Date: now.Format("02-01-2006"),
+	//	Time: now.Format("15:04:05"),
+	//}
+	//
+	//t, err := template.ParseFiles("view/login.html") //parse the html file homepage.html
+	//if err != nil { // if there is an error
+	//	log.Print("template parsing error: ", err) // log it
+	//}
+	//err = t.Execute(w, HomePageVars) //execute the template and pass it the HomePageVars struct to fill in the gaps
+	//if err != nil { // if there is an error
+	//	log.Print("template executing error: ", err) //log it
+	//}
 }
-
-//func showHtml(page , vars string)  {
-//
-//	t, err := template.ParseFiles("view/"+page+".html") //parse the html file homepage.html
-//	if err != nil { // if there is an error
-//		log.Print("template parsing error: ", err) // log it
-//	}
-//	err = t.Execute(w, vars) //execute the template and pass it the HomePageVars struct to fill in the gaps
-//	if err != nil { // if there is an error
-//		log.Print("template executing error: ", err) //log it
-//	}
-//}
