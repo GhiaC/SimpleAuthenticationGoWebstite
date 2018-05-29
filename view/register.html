@@ -2,17 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>{{.PageTitle}}</title>
 </head>
 <body>
-    <form action="">
+    <form action="/register" method="post">
         <label for="username">Username : </label>
         <input type="text" name="username" id="username">
         <br>
         <label for="password">Password : </label>
         <input type="text" id="password" name="password">
         <br>
-        <input type="submit" value="Register">
+        <input type="submit" name="submit" value="Register">
+    {{.Answer}}
     </form>
 </body>
 </html>

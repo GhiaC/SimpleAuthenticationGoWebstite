@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>{{.PageTitle}}</title>
 </head>
 <body>
     <form action="">
@@ -12,7 +12,8 @@
         <label for="password">Password : </label>
         <input type="text" id="password" name="password">
         <br>
-        <input type="submit" value="Admin Login">
+        <input name="submit" type="submit" value="Admin Login">
+        {{.Answer}}
     </form>
 </body>
 </html>
