@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+</head>
+
+
+<body>
+<p>Users</p>
+<table border="1">
+    <tr>
+        <td>ID</td>
+        <td>Username</td>
+    </tr>
+{{range .Users}}
+    <tr>
+        <td>{{.Id}}</td>
+        <td>{{.Username}}</td>
+    </tr>
+
+{{end}}
+</table>
+
+</body>
+</html>
