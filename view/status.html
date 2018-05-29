@@ -1,26 +1,19 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-    <title></title>
-</head>
-
-
-<body>
-<p>Users</p>
-<table border="1">
-    <tr>
-        <td>ID</td>
-        <td>Username</td>
-    </tr>
-{{range .Users}}
-    <tr>
-        <td>{{.Id}}</td>
-        <td>{{.Username}}</td>
-    </tr>
-
-{{end}}
-</table>
-
-</body>
-</html>
+<div class="well">
+    <h2>Users</h2>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Username</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{range .Users}}
+        <tr>
+            <td>{{.Id}}</td>
+            <td>{{.Username}}</td>
+        </tr>
+        {{end}}
+        </tbody>
+    </table>
+</div>

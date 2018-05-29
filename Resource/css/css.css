@@ -1,0 +1,317 @@
+.loadingHeader, .loadingJumbotron, .loadingNav, .footer {
+    display: block;
+}
+
+.content {
+    font-size: 19px;
+    background: rgba(238, 238, 238, .8);
+    border-radius: 7px;
+    padding: 25px;
+    margin-bottom: 25px;
+}
+
+.loading {
+    display: none;
+    width: 125px;
+    height: 125px;
+    position: fixed;
+    z-index: 1000;
+    top: 50%;
+    left: 50%;
+    margin-left: -62px;
+}
+
+body {
+    background: url(/Resource/pic/UoQbFHi.jpg) 100% 100% fixed;
+}
+
+.footer {
+    padding: 15px 0px 10px 0px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    text-align: center;
+    line-height: 1.42857143;
+    color: #fff;
+    background-color: #222;
+    border-color: #080808;
+}
+
+.footer {
+    background-color: #1b1b1b;
+    background-image: -moz-linear-gradient(top, #222222, #111111);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#222222), to(#111111));
+    background-image: -webkit-linear-gradient(top, #222222, #111111);
+    background-image: -o-linear-gradient(top, #222222, #111111);
+    background-image: linear-gradient(to bottom, #222222, #111111);
+    background-repeat: repeat-x;
+    border-color: #252525;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff222222', endColorstr='#ff111111', GradientType=0);
+}
+
+/***************LOGO****************/
+.item {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.pic {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+    position: absolute;
+    box-shadow: inset 0 0 0 15px rgba(255, 255, 255, 0.5);
+    transform-origin: 95% 40%;
+    transition: all 0.3s ease-in-out;
+    background-color: rgb(201, 81, 46);
+}
+
+.pic:after /****mahale shoro charkesh***/
+{
+    content: '';
+    width: 8px;
+    height: 8px;
+    position: absolute;
+    border-radius: 50%;
+    top: 40%;
+    left: 95%;
+    margin: -4px 0 0 -4px;
+    background: rgb(14, 14, 14);
+    box-shadow: 0 0 1px rgba(255, 255, 255, 0.9);
+}
+
+.img-1 {
+    background-image: url(../pic/photo.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    z-index: 12;
+}
+
+.item:hover .pic {
+    background-color: rgba(201, 81, 46, 0);
+    box-shadow: inset 0 0 0 15px rgba(255, 255, 255, 0.5), 0 1px 3px rgba(0, 0, 0, 0.2);
+    transform: rotate(-110deg);
+}
+
+#logo {
+    right: 8%;
+    top: 0;
+    position: absolute;
+    list-style: none;
+    z-index: 100;
+    text-align: center;
+    width: 220px;
+    height: 220px;
+}
+
+#logo li {
+    width: 220px;
+    height: 220px;
+}
+
+.text {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+    background: rgb(172, 172, 172);
+    box-shadow: inset 0 0 0 5px rgba(0, 0, 0, 0.05);
+}
+
+.text h3 {
+    color: #fff;
+    text-transform: uppercase;
+    position: relative;
+    letter-spacing: 2px;
+    font-size: 18px;
+    margin: 0 60px;
+    padding: 22px 0 0 0;
+    height: 85px;
+    text-shadow: 0 0 1px #fff, 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.text p {
+    color: #fff;
+    padding: 10px 5px;
+    font-style: italic;
+    margin: 0 30px;
+    font-size: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+/****************style tag a**************/
+.text p a {
+    color: #555;
+    text-decoration: none;
+    display: block;
+    width: 80px;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    color: #fff;
+    font-style: normal;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 9px;
+    letter-spacing: 1px;
+    padding-top: 24px;
+    margin: 7px auto 0;
+    font-family: 'Open Sans', Arial, sans-serif;
+    opacity: 0;
+    transition: transform 0.3s ease-in-out 0.2s, opacity 0.3s ease-in-out .2s, background 0.2s linear;
+    transform: translateX(60px) rotate(90deg);
+    backface-visibility: hidden;
+}
+
+.text p a:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.item:hover .text p a {
+    opacity: 1;
+    transform: translateX(0px) rotate(0deg);
+}
+
+/********* bootstrapless****/
+
+.icon-circle .fa {
+    font-size: 25px;
+    color: #e84700;
+    margin: 0 auto;
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+    border: 2px solid #e84700;
+    line-height: 80px;
+    cursor: pointer;
+    -webkit-transition: all ease-in-out 0.35s;
+    -moz-transition: all ease-in-out 0.35s;
+    -o-transition: all ease-in-out 0.35s;
+    -ms-transition: all ease-in-out 0.35s;
+    transition: all ease-in-out 0.20s, background-color ease-in-out 0.05s;
+}
+
+.icon-circle .fa:hover {
+
+    background-color: #e84700;
+    color: #fff;
+    border: 1px solid #e84711;
+    -moz-box-shadow: inset 0px 0px 0px 5px #ffffff;
+    -o-box-shadow: inset 0px 0px 0px 5px #ffffff;
+    -ms-box-shadow: inset 0px 0px 0px 5px #ffffff;
+    -webkit-box-shadow: inset 0px 0px 0px 5px #ffffff;
+    box-shadow: inset 0px 0px 0px 5px #ffffff;
+    -ms-transform: scale(1.2, 1.2);
+    -webkit-transform: scale(1.2, 1.2);
+    -moz-transform: scale(1.2, 1.2);
+    -o-transform: scale(1.2, 1.2);
+    transform: scale(1.2, 1.2);
+}
+
+.icon-circle i:before {
+    margin-left: 0px;
+    font-size: 40px;
+}
+
+@media (min-width: 320px) and (max-width: 980px) {
+
+    #logo {
+        display: none;
+    }
+}
+
+@media (min-width: 320px) and (max-width: 768px) {
+    .icon-circle .fa {
+        font-size: 15px;
+        color: #e84700;
+        margin: 0 auto;
+        height: 40px;
+        width: 40px;
+        border-radius: 50%;
+        border: 2px solid #e84700;
+        line-height: 40px;
+        cursor: pointer;
+        -webkit-transition: all ease-in-out 0.35s;
+        -moz-transition: all ease-in-out 0.35s;
+        -o-transition: all ease-in-out 0.35s;
+        -ms-transition: all ease-in-out 0.35s;
+        transition: all ease-in-out 0.20s, background-color ease-in-out 0.05s;
+    }
+
+    .icon-circle .fa:hover {
+
+        background-color: #e84700;
+        color: #fff;
+        border: 1px solid #e84711;
+        -moz-box-shadow: inset 0px 0px 0px 5px #ffffff;
+        -o-box-shadow: inset 0px 0px 0px 5px #ffffff;
+        -ms-box-shadow: inset 0px 0px 0px 5px #ffffff;
+        -webkit-box-shadow: inset 0px 0px 0px 5px #ffffff;
+        box-shadow: inset 0px 0px 0px 5px #ffffff;
+        -ms-transform: scale(1.2, 1.2);
+        -webkit-transform: scale(1.2, 1.2);
+        -moz-transform: scale(1.2, 1.2);
+        -o-transform: scale(1.2, 1.2);
+        transform: scale(1.2, 1.2);
+    }
+
+    .icon-circle i:before {
+        margin-left: 0px;
+        font-size: 20px;
+    }
+}
+
+.ifacebook .fa {
+    color: #3B5998;
+    border: 2px solid #3B5998;
+}
+
+.ifacebook .fa:hover {
+
+    background-color: #3B5998;
+    color: #fff;
+    border: 1px solid #3B5998;
+
+}
+
+.itwittter .fa {
+    color: #33ccff;
+    border: 2px solid #33ccff;
+}
+
+.itwittter .fa:hover {
+
+    background-color: #33ccff;
+    color: #fff;
+    border: 1px solid #33ccff;
+
+}
+
+.igoogle .fa {
+    color: #BD3518;
+    border: 2px solid #BD3518;
+}
+
+.igoogle .fa:hover {
+
+    background-color: #BD3518;
+    color: #fff;
+    border: 1px solid #BD3518;
+
+}
+
+.iLinkedin .fa {
+    color: #007bb7;
+    border: 2px solid #007bb7;
+}
+
+.iLinkedin .fa:hover {
+
+    background-color: #007bb7;
+    color: #fff;
+    border: 1px solid #007bb7;
+
+}

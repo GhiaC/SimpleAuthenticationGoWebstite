@@ -10,15 +10,12 @@ import (
 )
 
 func main() {
-
-	//results, err := engine.Query("select * from users")
-	//fmt.Println(results,err)
-
-
+	fs := http.FileServer(http.Dir("Resource"))
+	http.Handle("/Resource/", http.StripPrefix("/Resource/", fs))
 	http.HandleFunc("/", HomePage)
 	http.HandleFunc("/login", Controler.Login)
 	http.HandleFunc("/register", Controler.Register)
-	http.HandleFunc("/status", Controler.Status)
+	http.HandleFunc("/users", Controler.Status)
 	http.HandleFunc("/logout", Controler.Logout)
 	http.HandleFunc("/admin", Controler.Admin)
 	log.Fatal(http.ListenAndServe(":8080", nil))
@@ -37,5 +34,5 @@ func HomePage(w http.ResponseWriter, r *http.Request) {
 		HomePageVars.LoginStatus = "dear " + username + ", you are logged in"
 	}
 
-	Controler.OpenTemplate(w,HomePageVars,"homepage.html")
+	Controler.OpenTemplate(w,r,HomePageVars,"homepage.html",Models.HeaderVariables{Title:"Authentication GO"})
 }

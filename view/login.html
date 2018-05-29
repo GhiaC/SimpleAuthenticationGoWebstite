@@ -1,19 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>{{.PageTitle}}</title>
-</head>
-<body>
-    <form action="/login" method="post">
-        <label for="username">Username : </label>
-        <input type="text" name="username" id="username">
-        <br>
-        <label for="password">Password : </label>
-        <input type="text" id="password" name="password">
-        <br>
-        <input type="submit" name="submit" value="Login">
-        {{.Answer}}
-    </form>
-</body>
-</html>
+<div class="well" style="padding: 0;margin: 0">
+    <div class="jumbotron">
+        <div class="container">
+            <div class="row" id="resume">
+                <div class="col-sm-offset-4 col-sm-4" style="min-height:220px;">
+                    <div class="alert-danger">
+                    {{.Answer}}
+                    </div>
+                    <form method="post">
+                        <div class="form-group">
+                            <label for="usr">Username:</label>
+                            <input type="text" class="form-control" id="usr" name="username">
+                        </div>
+                        <div class="form-group">
+                            <label for="pwd">Password:</label>
+                            <input type="password" class="form-control" name="password" id="psw">
+                        </div>
+                        <div class="from-group">
+                            <button type="submit" value="{{.SubmitValue}}" class="btn col-sm-12 btn-primary btn-sm">{{.SubmitValue}}</button>
+                        </div>
+                    </form>
+                </div>
+            </div><!-- end of row -->
+        </div><!-- end of container -->
+    </div> <!-- end of jumbotron -->
+</div>

@@ -7,7 +7,6 @@ import (
 
 func Authenticated(r *http.Request) (bool, string) {
 	session, _ := Store.Get(r, "cookie-name")
-	// Check if user is authenticated
 	if auth, ok := session.Values["authenticated"].(bool); !ok || !auth {
 		//http.Error(w, "Forbidden", http.StatusForbidden)
 		return false, ""
@@ -22,9 +21,10 @@ func Login(w http.ResponseWriter, r *http.Request) {
 	password := r.PostForm.Get("password")
 	submit := r.PostForm.Get("submit")
 
-	vars := Models.PageVariables{
+	vars := Models.LoginPageVariables{
 		Answer:    "",
-		PageTitle: "Login",
+		Url : "/login",
+		SubmitValue : "Login",
 	}
 
 	if submit == "Login" && (username == "" || password == "") {
@@ -33,13 +33,11 @@ func Login(w http.ResponseWriter, r *http.Request) {
 		var id int
 		engine := GetEngine()
 		has, err := engine.Table("users").Where("username = ? and password = ? ", username, password).Cols("id").Get(&id)
-		println(has, id)
 		if has && err == nil && id > 0 {
 			session, _ := Store.Get(r, "cookie-name")
 			session.Values["authenticated"] = true
 			session.Values["username"] = username
 			session.Values["id"] = id
-			//id,setted := session.Values["id"].(int)
 			session.Save(r, w)
 		} else {
 			vars.Answer = "username or password is wrong"
@@ -47,7 +45,7 @@ func Login(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if ok, _ := Authenticated(r); !ok {
-		OpenTemplate(w,vars,"login.html")
+		OpenTemplate(w,r,vars,"login.html",Models.HeaderVariables{Title:"Login"})
 	} else {
 		http.Redirect(w, r, "/", http.StatusSeeOther)
 	}

@@ -1,8 +1,13 @@
 package Models
 
 type PageVariables struct {
-	PageTitle string
 	Answer    string
+}
+
+type LoginPageVariables struct {
+	Answer      string
+	Url         string
+	SubmitValue string
 }
 
 type HomePageVariables struct {
@@ -12,5 +17,13 @@ type HomePageVariables struct {
 }
 
 type StatusPageVariables struct {
-	Users [] User
+	Users    [] User
+}
+
+type HeaderVariables struct {
+	Title string
+}
+
+type NavigationVariables struct {
+	LoggedIn bool
 }
